@@ -27,5 +27,16 @@ namespace GTL.Model
         public int NoOfCopies { get; set; }
 
         public int AvailableNoOfCopies { get; set; }
+
+        public Book()
+        {
+
+        }
+
+        public Book(int ISBN, string Title)
+        {
+            this.ISBN = ISBN;
+            this.Title = Title;
+        }
     }
 }
