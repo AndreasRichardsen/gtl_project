@@ -15,5 +15,11 @@ namespace GTL.Model
         public string CampusAddress { get; set; }
         public string HomeAddress { get; set; }
         public string[] PhoneNumbers { get; set; }
+
+        public Member(string SSN, string FName)
+        {
+            this.SSN = SSN;
+            this.FirstName = FName;
+        }
     }
 }

@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\BookController.cs" />
+    <Compile Include="Business\MemberController.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Member.cs" />
@@ -52,7 +54,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Business\" />
     <Folder Include="TUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
