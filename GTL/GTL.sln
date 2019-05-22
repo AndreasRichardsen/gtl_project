@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL", "GTL\GTL.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Tests", "GTL.Tests\GTL.Tests.csproj", "{8BA6216B-EFB3-4C43-A055-0E6B872617E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.DAL", "GTL.DAL\GTL.DAL.csproj", "{70F75DC7-7B0F-46A8-8384-52FB11B001F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.CUIClient", "GTL.CUIClient\GTL.CUIClient.csproj", "{0F4BB760-1DA3-4B87-B76F-0EF3221FCE21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F4BB760-1DA3-4B87-B76F-0EF3221FCE21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F4BB760-1DA3-4B87-B76F-0EF3221FCE21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F4BB760-1DA3-4B87-B76F-0EF3221FCE21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F4BB760-1DA3-4B87-B76F-0EF3221FCE21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
