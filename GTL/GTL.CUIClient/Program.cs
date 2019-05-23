@@ -38,7 +38,7 @@ namespace GTL.CUIClient
                 }
 
                 command.Connection = connection;
-                command.CommandText = "SELECT top 10* FROM Item";
+                command.CommandText = "SELECT top 10 * FROM Item";
 
                 using(DbDataReader dataReader = command.ExecuteReader())
                 {

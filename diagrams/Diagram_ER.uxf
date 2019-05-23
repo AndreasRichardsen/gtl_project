@@ -533,10 +533,10 @@ group=13</panel_attributes>
     <coordinates>
       <x>740</x>
       <y>500</y>
-      <w>30</w>
+      <w>40</w>
       <h>140</h>
     </coordinates>
-    <panel_attributes>m1=n
+    <panel_attributes>m1=m
 fontsize=14</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
