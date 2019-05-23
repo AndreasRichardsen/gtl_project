@@ -30,7 +30,7 @@ namespace GTL.DAL.ConnectedLayer
             string Description,
             string Author, 
             string Publisher,
-            string YearPublishing)
+            string YearPublishing) // CODE REVIEW CATCH BUG INT INSTEAD of STRING
         {
             string sql = "INSERT INTO Item" +
                 "(ISBN, Title, ItemDescription, Author, Publisher, YearPublishing) VALUES (@ISBN,@Title,@Description,@Author,@Publisher,@YearPublishing)";
@@ -165,6 +165,39 @@ namespace GTL.DAL.ConnectedLayer
                 dataReader.Close();
             }
             return dataTable;
+        }
+
+        public string LookUpItemDescription(int itemISBN)
+        {
+            string itemDescription;
+
+            using(SqlCommand command = new SqlCommand("GetItemDescription", _sqlConnection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parameter = new SqlParameter
+                {
+                    ParameterName = "@isbn",
+                    SqlDbType = SqlDbType.Int,
+                    Value = itemISBN,
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter
+                {
+                    ParameterName = "@itemDescription",
+                    SqlDbType = SqlDbType.Char,
+                    Size = 10,
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(parameter);
+
+                command.ExecuteNonQuery();
+
+                itemDescription = (string)command.Parameters["@itemDescription"].Value;
+            }
+            return itemDescription;
         }
     }
 }
