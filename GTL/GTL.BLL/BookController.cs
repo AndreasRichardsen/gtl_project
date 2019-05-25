@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Common;
+using System.Configuration;
+using GTL.DAL.ConnectedLayer;
+using GTL.DAL.Models;
+using System.Data.SqlClient;
+
+namespace GTL.BLL
+{
+    public class BookController
+    {
+        public SqlConnectionStringBuilder GetConnectionString()
+        {
+            string connectionString = @"Data Source=(local)\SQL1;" + "Initial Catalog=GTL_TEST; Integrated Security=True";
+
+            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString)
+            {
+                ConnectTimeout = 5
+            };
+
+            return connectionStringBuilder;
+        }
+
+        public bool AddBook(Book book)
+        {
+            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            BookDAL bookDAL = new BookDAL();
+            return bookDAL.InsertNewBook(cnStringBuilder.ConnectionString, book);
+        }
+
+        public bool CanLoanBookByType(string bookType)
+        {
+            if (bookType == "Normal") return true;
+            else return false;
+        }
+
+        public Book CreateBook(long inputISBN, string inputTitle, string inputAuthor, string inputDescription, string inputPublisher, int inputYearPublishing, string inputType)
+        {
+            return new Book(inputISBN, inputTitle, inputAuthor, inputDescription, inputPublisher, inputYearPublishing, inputType);
+        }
+
+        public bool VerifyCopyAvailable(bool isAvailable)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

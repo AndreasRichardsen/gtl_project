@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GTL.CUIClient")]
+[assembly: AssemblyTitle("GTL.CUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GTL.CUIClient")]
+[assembly: AssemblyProduct("GTL.CUI")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0f4bb760-1da3-4b87-b76f-0ef3221fce21")]
+[assembly: Guid("5b7745a2-c2fa-471a-bc49-270819183269")]
 
 // Version information for an assembly consists of the following four values:
 //

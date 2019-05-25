@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5AA639D9-807C-4412-A499-C3B7A4E0C895}</ProjectGuid>
+    <ProjectGuid>{5B7745A2-C2FA-471A-BC49-270819183269}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GTL</RootNamespace>
-    <AssemblyName>GTL</AssemblyName>
+    <RootNamespace>GTL.CUI</RootNamespace>
+    <AssemblyName>GTL.CUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,19 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\BookController.cs" />
-    <Compile Include="Business\MemberController.cs" />
-    <Compile Include="Model\Book.cs" />
-    <Compile Include="Model\Card.cs" />
-    <Compile Include="Model\Member.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TUI\" />
+    <ProjectReference Include="..\GTL.BLL\GTL.BLL.csproj">
+      <Project>{3C5689D9-81B7-4540-8E60-FF27F1AB8FE2}</Project>
+      <Name>GTL.BLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

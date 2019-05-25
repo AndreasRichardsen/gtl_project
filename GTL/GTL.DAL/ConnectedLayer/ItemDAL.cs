@@ -11,12 +11,15 @@ namespace GTL.DAL.ConnectedLayer
 {
     public class ItemDAL
     {
+        
         private SqlConnection _sqlConnection = null;
 
         public void OpenConnection(string connectionString)
         {
             _sqlConnection = new SqlConnection { ConnectionString = connectionString };
             _sqlConnection.Open();
+            Console.WriteLine("Connected to the db!");
+            Console.ReadLine();
         }
 
         public void CloseConnection()
@@ -25,7 +28,7 @@ namespace GTL.DAL.ConnectedLayer
         }
 
         public void InsertItem(
-            int ISBN, 
+            long ISBN, 
             string Title, 
             string Description,
             string Author, 
@@ -93,10 +96,27 @@ namespace GTL.DAL.ConnectedLayer
             }
         }
 
-        public void InsertItem(NewItem item)
+        public bool InsertNewItem(Item newItem)
         {
+            bool success = false;
+
             string sql = "INSERT INTO Item" +
-                $"(ISBN, Title, ItemDescription, Author, Publisher, YearPublishing) VALUES ('{item.ISBN}','{item.Title}','{item.Description}','{item.Author},'{item.Publisher}','{item.YearPublishing}')";
+                $"(ISBN, Title, ItemDescription, Author, Publisher, YearPublishing) VALUES ('{newItem.ISBN}','{newItem.Title}','{newItem.Description}','{newItem.Author},'{newItem.Publisher}','{newItem.YearPublishing}')";
+
+            using (SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
+                catch (SqlException e)
+                {
+
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return success;
         }
 
         public void DeleteItem(int ISBN)
@@ -127,9 +147,9 @@ namespace GTL.DAL.ConnectedLayer
             }
         }
 
-        public List<NewItem> GetAllItemsAsList()
+        public List<Item> GetAllItemsAsList()
         {
-            List<NewItem> items = new List<NewItem>();
+            List<Item> items = new List<Item>();
 
             string sql = "SELECT * FROM Item";
 
@@ -138,6 +158,7 @@ namespace GTL.DAL.ConnectedLayer
                 SqlDataReader dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
+                    /*
                     items.Add(new NewItem
                     {
                         ISBN = (int)dataReader["ISBN"],
@@ -146,7 +167,7 @@ namespace GTL.DAL.ConnectedLayer
                         Author = (string)dataReader["Author"],
                         Publisher = (string)dataReader["Publisher"],
                         YearPublishing = (int)dataReader["YearPublishing"]
-                    });
+                    });*/
                 }
                 dataReader.Close();
             }
