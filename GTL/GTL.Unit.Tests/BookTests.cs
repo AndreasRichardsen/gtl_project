@@ -3,13 +3,13 @@ using GTL.BLL;
 using GTL.DAL.Models;
 using NUnit.Framework;
 
-namespace GTL.Tests
+namespace GTL.Unit.Tests
 {
     [TestFixture]
-    public class BookUnitTest
+    public class BookTests
     {
-       // [Test]
-        public void CreateBook_Object_Returns_Book()
+        [Test]
+        public void CreateBookObject_Success_Returns_Book()
         {
             // Arrange
             long inputISBN = 1234;
@@ -33,8 +33,8 @@ namespace GTL.Tests
             Assert.AreEqual(expectedResult.Type, actualResult.Type);
         }
 
-        //[Test]
-        public void CanLoanBook_By_Type_Return_True()
+        [Test]
+        public void CanLoanBookByType_Success_Return_True()
         {
             // Arrange
             string inputType = "Normal";
@@ -43,18 +43,6 @@ namespace GTL.Tests
             bool expectedResult = true;
             bool actualResult = ctr.CanLoanBookByType(inputType);
             //Assert
-            Assert.AreEqual(expectedResult, actualResult);
-        }
-
-        //[Test]
-        public void CanLoanBookCopy_Availability_Returns_True()
-        {
-            bool isAvailable = false;
-            BookController ctr = new BookController();
-            bool expectedResult = true;
-
-            bool actualResult = ctr.VerifyCopyAvailable(isAvailable);
-
             Assert.AreEqual(expectedResult, actualResult);
         }
     }

@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookController.cs" />
+    <Compile Include="CardController.cs" />
+    <Compile Include="LoanController.cs" />
+    <Compile Include="PersonController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

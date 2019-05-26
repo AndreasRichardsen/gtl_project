@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Tests", "GTL.Tests\GTL.Tests.csproj", "{8BA6216B-EFB3-4C43-A055-0E6B872617E7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.DAL", "GTL.DAL\GTL.DAL.csproj", "{70F75DC7-7B0F-46A8-8384-52FB11B001F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.CUI", "GTL.CUI\GTL.CUI.csproj", "{5B7745A2-C2FA-471A-BC49-270819183269}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.BLL", "GTL.BLL\GTL.BLL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Integration.Tests", "GTL.Integration.Tests\GTL.Integration.Tests.csproj", "{69C7C273-5D70-4DE4-ABFC-5ABCBF55DC8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Unit.Tests", "GTL.Unit.Tests\GTL.Unit.Tests.csproj", "{5134EC6A-4353-49BB-8055-E444E3D93E99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BA6216B-EFB3-4C43-A055-0E6B872617E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70F75DC7-7B0F-46A8-8384-52FB11B001F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{69C7C273-5D70-4DE4-ABFC-5ABCBF55DC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69C7C273-5D70-4DE4-ABFC-5ABCBF55DC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69C7C273-5D70-4DE4-ABFC-5ABCBF55DC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5134EC6A-4353-49BB-8055-E444E3D93E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5134EC6A-4353-49BB-8055-E444E3D93E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5134EC6A-4353-49BB-8055-E444E3D93E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5134EC6A-4353-49BB-8055-E444E3D93E99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
