@@ -13,7 +13,7 @@ namespace GTL.Integration.Tests
         public void InsertNewBook_Success_Returns_True()
         {
             // Arrange 
-            long inputISBN = 12345677;
+            long inputISBN = 12345665;
             string inputTitle = "Test Book 1";
             string inputAuthor = "Test Author";
             string inputDescription = "Test description";
@@ -28,6 +28,29 @@ namespace GTL.Integration.Tests
             bool actualResult = bookCtr.AddBook(inputBook);
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [Test]
+        public void DeleteBookByISBN_Success_Returns_True()
+        {
+            long inputISBN = 12345665;
+            BookController bookCtr = new BookController();
+
+            bool actualResult = bookCtr.DeleteBookByIsbn(inputISBN);
+
+            Assert.IsTrue(actualResult);
+        }
+
+        [Test]
+        public void InsertNewBookCopy_Success_Returns_True()
+        {
+            long inputISBN = 12345665;
+            long inputBarcode = 77777777777;
+            BookController bookCtr = new BookController();
+
+            bool result = bookCtr.InsertNewBookCopy(inputISBN, inputBarcode);
+
+            Assert.IsTrue(result);
         }
     }
 }

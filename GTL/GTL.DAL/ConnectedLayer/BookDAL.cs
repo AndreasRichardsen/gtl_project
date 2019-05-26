@@ -10,21 +10,6 @@ namespace GTL.DAL.ConnectedLayer
 {
     public class BookDAL
     {
-        private SqlConnection _sqlConnection = null;
-    
-        public void OpenConnection(string connectionString)
-        {
-            _sqlConnection = new SqlConnection { ConnectionString = connectionString };
-            _sqlConnection.Open();
-            Console.WriteLine("Connected to the db!");
-            Console.ReadLine();
-        }
-
-        public void CloseConnection()
-        {
-            _sqlConnection.Close();
-        }
-
         public bool InsertNewBook(string cntString, Book newBook)
         {
             SqlConnection _sqlConnection = new SqlConnection { ConnectionString = cntString };
@@ -47,6 +32,58 @@ namespace GTL.DAL.ConnectedLayer
                 catch(SqlException e)
                 {
                     
+                    Console.WriteLine(e.Message);
+                }
+            }
+            _sqlConnection.Close();
+            return success;
+        }
+
+        public bool DeleteBookByIsbn(string connectionString, long isbn)
+        {
+            bool success = false;
+
+            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
+            _sqlConnection.Open();
+
+            string sql = $"DELETE FROM Book WHERE ISBN = '{isbn}';" +
+                $"DELETE FROM Item WHERE ISBN = '{isbn}';";
+
+            using(SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
+                catch (SqlException e)
+                {
+
+                    Console.WriteLine(e.Message);
+                }
+            }
+            _sqlConnection.Close();
+            return success;
+        }
+
+        public bool InsertNewBookCopy(string connectionString, long isbn, long barcode)
+        {
+            bool success = false;
+            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
+            _sqlConnection.Open();
+
+            string sql = $"INSERT INTO BookCopy (ISBN, Barcode) VALUES ('{isbn}', '{barcode}');";
+
+            using(SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                }
+                catch (SqlException e)
+                {
+
                     Console.WriteLine(e.Message);
                 }
             }

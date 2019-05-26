@@ -43,9 +43,18 @@ namespace GTL.BLL
             return new Book(inputISBN, inputTitle, inputAuthor, inputDescription, inputPublisher, inputYearPublishing, inputType);
         }
 
-        public bool VerifyCopyAvailable(bool isAvailable)
+        public bool DeleteBookByIsbn(long isbn)
         {
-            throw new NotImplementedException();
+            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            BookDAL bookDAL = new BookDAL();
+            return bookDAL.DeleteBookByIsbn(cnStringBuilder.ConnectionString, isbn);
+        }
+
+        public bool InsertNewBookCopy(long isbn, long barcode)
+        {
+            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            BookDAL bookDAL = new BookDAL();
+            return bookDAL.InsertNewBookCopy(cnStringBuilder.ConnectionString, isbn, barcode);
         }
     }
 }
