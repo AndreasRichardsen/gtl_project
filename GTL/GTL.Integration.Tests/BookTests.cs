@@ -24,8 +24,10 @@ namespace GTL.Integration.Tests
                 inputDescription, inputPublisher, inputYearPublishing, inputType);
             BookController bookCtr = new BookController();
             bool expectedResult = true;
+
             // Act
             bool actualResult = bookCtr.AddBook(inputBook);
+
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
         }
