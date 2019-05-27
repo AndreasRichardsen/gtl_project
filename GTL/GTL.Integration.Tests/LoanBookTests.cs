@@ -57,5 +57,17 @@ namespace GTL.Integration.Tests
 
             Assert.That(actualResult, Is.EqualTo(expectedResult));
         }
+
+        [Test]
+        public void DeleteLoanById_Success_Returns_True()
+        {
+            long inputId = 1;
+            LoanController loanCtr = new LoanController();
+
+            bool result = loanCtr.DeleteLoanById(inputId);
+
+            Assert.IsTrue(result);
+
+        }
     }
 }

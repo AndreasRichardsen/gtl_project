@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ConnectedLayer\BookDAL.cs" />
     <Compile Include="ConnectedLayer\CardDAL.cs" />
+    <Compile Include="ConnectedLayer\CommandBuilder.cs" />
     <Compile Include="ConnectedLayer\LoanDAL.cs" />
     <Compile Include="ConnectedLayer\PersonDAL.cs" />
     <Compile Include="Models\Book.cs" />

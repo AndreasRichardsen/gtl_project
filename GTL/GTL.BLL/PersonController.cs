@@ -11,28 +11,18 @@ namespace GTL.BLL
 {
     public class PersonController
     {
-        public SqlConnectionStringBuilder GetConnectionString()
-        {
-            string connectionString = @"Data Source=(local)\SQL1;" + "Initial Catalog=GTL_TEST; Integrated Security=True";
-
-            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString)
-            {
-                ConnectTimeout = 5
-            };
-
-            return connectionStringBuilder;
-        }
-
         public bool InsertNewMember(Member member)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             PersonDAL personDAL = new PersonDAL();
             return personDAL.InsertNewMember(cnStringBuilder.ConnectionString, member);
         }
 
         public bool DeleteMemberBySSN(long ssn)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             PersonDAL personDAL = new PersonDAL();
             return personDAL.DeleteMemberBySSN(cnStringBuilder.ConnectionString, ssn);
         }

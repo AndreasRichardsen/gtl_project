@@ -13,21 +13,10 @@ namespace GTL.BLL
 {
     public class BookController
     {
-        public SqlConnectionStringBuilder GetConnectionString()
-        {
-            string connectionString = @"Data Source=(local)\SQL1;" + "Initial Catalog=GTL_TEST; Integrated Security=True";
-
-            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString)
-            {
-                ConnectTimeout = 5
-            };
-
-            return connectionStringBuilder;
-        }
-
         public bool AddBook(Book book)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             BookDAL bookDAL = new BookDAL();
             return bookDAL.InsertNewBook(cnStringBuilder.ConnectionString, book);
         }
@@ -39,14 +28,16 @@ namespace GTL.BLL
 
         public bool DeleteBookByIsbn(long isbn)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             BookDAL bookDAL = new BookDAL();
             return bookDAL.DeleteBookByIsbn(cnStringBuilder.ConnectionString, isbn);
         }
 
         public bool InsertNewBookCopy(long isbn, long barcode)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             BookDAL bookDAL = new BookDAL();
             return bookDAL.InsertNewBookCopy(cnStringBuilder.ConnectionString, isbn, barcode);
         }
