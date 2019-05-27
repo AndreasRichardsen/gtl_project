@@ -29,7 +29,8 @@ namespace GTL.BLL
 
         public bool MatchBookWithCopy(long isbn, long barcode)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             LoanDAL loanDAL = new LoanDAL();
             BookCopy result = loanDAL.GetBookCopyByIsbnAndBarcode(cnStringBuilder.ConnectionString, isbn, barcode);
             if (result == null) return false;
@@ -38,7 +39,8 @@ namespace GTL.BLL
 
         public bool VerifyBookCopyIsAvailable(long barcode)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             LoanDAL loanDAL = new LoanDAL();
             BookCopy result = loanDAL.GetBookCopyAvailability(cnStringBuilder.ConnectionString, barcode);
 
@@ -48,7 +50,8 @@ namespace GTL.BLL
 
         public bool VerifyCardNotExpired(int cardNo)
         {
-            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            DatabaseConnection DbConnection = new DatabaseConnection();
+            SqlConnectionStringBuilder cnStringBuilder = DbConnection.GetConnectionString();
             CardDAL cardDAL = new CardDAL();
             Card result = cardDAL.GetCardAvailability(cnStringBuilder.ConnectionString, cardNo);
 
