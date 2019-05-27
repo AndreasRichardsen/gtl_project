@@ -30,5 +30,60 @@ namespace GTL.DAL.ConnectedLayer
 
             return cmdBuilder.ExecuteCommand(connectionString, sql);
         }
+
+        public BookCopy GetBookCopyByIsbnAndBarcode(string connectionString, long isbn, long barcode)
+        {
+            BookCopy bookCopy = null;
+
+            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
+            _sqlConnection.Open();
+
+            string sql = "SELECT ISBN, Barcode FROM BookCopy " +
+                $"WHERE ISBN = '{isbn}' AND Barcode = '{barcode}';";
+
+            using (SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
+            {
+                SqlDataReader dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    bookCopy = new BookCopy
+                    {
+                        ISBN = Convert.ToInt64( dataReader["ISBN"]),
+                        Barcode = Convert.ToInt64(dataReader["Barcode"])
+                    };
+                }
+                dataReader.Close();
+            }
+
+            _sqlConnection.Close();
+            return bookCopy;
+        }
+
+        public BookCopy GetBookCopyAvailability(string connectionString, long barcode)
+        {
+            BookCopy bookCopy = null;
+
+            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
+            _sqlConnection.Open();
+
+            string sql = "SELECT Barcode FROM Borrow " +
+                $"WHERE Barcode = '{barcode}' AND IsReturned = 'false';";
+
+            using (SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
+            {
+                SqlDataReader dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    bookCopy = new BookCopy
+                    {
+                        Barcode = Convert.ToInt64(dataReader["Barcode"])
+                    };
+                }
+                dataReader.Close();
+            }
+
+            _sqlConnection.Close();
+            return bookCopy;
+        }
     }
 }

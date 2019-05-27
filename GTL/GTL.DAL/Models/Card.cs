@@ -11,6 +11,8 @@ namespace GTL.DAL.Models
         public long CardNo { get; set; }
         public string IssueDate { get; set; }
 
+        public Card() { }
+
         public Card(long cardno, string issuedate)
         {
             this.CardNo = cardno;

@@ -26,5 +26,46 @@ namespace GTL.BLL
             LoanDAL loanDAL = new LoanDAL();
             return loanDAL.DeleteLoanById(cnStringBuilder.ConnectionString, id);
         }
+
+        public bool MatchBookWithCopy(long isbn, long barcode)
+        {
+            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            LoanDAL loanDAL = new LoanDAL();
+            BookCopy result = loanDAL.GetBookCopyByIsbnAndBarcode(cnStringBuilder.ConnectionString, isbn, barcode);
+            if (result == null) return false;
+            else return true;
+        }
+
+        public bool VerifyBookCopyIsAvailable(long barcode)
+        {
+            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            LoanDAL loanDAL = new LoanDAL();
+            BookCopy result = loanDAL.GetBookCopyAvailability(cnStringBuilder.ConnectionString, barcode);
+
+            if (result == null) return true;
+            else return false;
+        }
+
+        public bool VerifyCardNotExpired(int cardNo)
+        {
+            SqlConnectionStringBuilder cnStringBuilder = GetConnectionString();
+            CardDAL cardDAL = new CardDAL();
+            Card result = cardDAL.GetCardAvailability(cnStringBuilder.ConnectionString, cardNo);
+
+            if (result == null) return false;
+            else return true;
+        }
+
+        public bool CheckLoanBookLimit(int noOfBookLoans)
+        {
+            if (noOfBookLoans >= 5) return false;
+            else return true;
+        }
+
+        public bool CheckBookType(string typeOfBook)
+        {
+            if (typeOfBook == "Normal") return true;
+            else return false;
+        }
     }
 }

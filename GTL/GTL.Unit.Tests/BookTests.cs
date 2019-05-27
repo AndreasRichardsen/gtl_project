@@ -32,18 +32,5 @@ namespace GTL.Unit.Tests
             Assert.AreEqual(expectedResult.YearPublishing, actualResult.YearPublishing);
             Assert.AreEqual(expectedResult.Type, actualResult.Type);
         }
-
-        [Test]
-        public void CanLoanBookByType_Success_Return_True()
-        {
-            // Arrange
-            string inputType = "Normal";
-            BookController ctr = new BookController();
-            // Act
-            bool expectedResult = true;
-            bool actualResult = ctr.CanLoanBookByType(inputType);
-            //Assert
-            Assert.AreEqual(expectedResult, actualResult);
-        }
     }
 }

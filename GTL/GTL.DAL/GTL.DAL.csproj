@@ -48,6 +48,7 @@
     <Compile Include="ConnectedLayer\LoanDAL.cs" />
     <Compile Include="ConnectedLayer\PersonDAL.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookCopy.cs" />
     <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Loan.cs" />
