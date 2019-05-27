@@ -21,5 +21,16 @@ namespace GTL.Integration.Tests
 
             Assert.IsTrue(result);
         }
+
+        [Test]
+        public void DeleteLoanById_Success_Returns_True()
+        {
+            long inputId = 1;
+            LoanController loanCtr = new LoanController();
+
+            bool result = loanCtr.DeleteLoanById(inputId);
+
+            Assert.IsTrue(result);
+        }
     }
 }

@@ -10,32 +10,25 @@ namespace GTL.DAL.ConnectedLayer
 {
     public class LoanDAL
     {
+        CommandBuilder cmdBuilder = new CommandBuilder();
+
         public bool InsertNewLoan(string connectionString, Loan newLoan)
         {
-            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
-            _sqlConnection.Open();
-
-            bool success = false;
 
             string sql = "INSERT INTO Borrow (ISBN, Barcode, CardNo, IsReturned, DateBorrowed) " +
                 $"VALUES ('{newLoan.ISBN}', '{newLoan.Barcode}', '{newLoan.CardNo}'," +
                 $" '{newLoan.IsReturned.ToString()}', '{newLoan.DateBorrowed}');";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
-            {
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    success = true;
-                }
-                catch (SqlException e)
-                {
+            return cmdBuilder.ExecuteCommand(connectionString, sql);
+        }
 
-                    Console.WriteLine(e.Message);
-                }
-            }
-            _sqlConnection.Close();
-            return success;
+        public bool DeleteLoanById(string connectionString, long id)
+        {
+
+            string sql = $"DELETE FROM Borrow WHERE Id = '{id}' " +
+                "DBCC CHECKIDENT (Borrow, RESEED, 0)";
+
+            return cmdBuilder.ExecuteCommand(connectionString, sql);
         }
     }
 }

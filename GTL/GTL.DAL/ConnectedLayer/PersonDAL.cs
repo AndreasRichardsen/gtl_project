@@ -10,59 +10,25 @@ namespace GTL.DAL.ConnectedLayer
 {
     public class PersonDAL
     {
+        CommandBuilder cmdBuilder = new CommandBuilder();
+
         public bool InsertNewMember(string connectionString, Member newMember)
         {
-            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
-            _sqlConnection.Open();
-
-            bool success = false;
 
             string sql = "INSERT INTO Person (SSN, FName, LName, HomeAddress, CampusAddress, CardNo) " +
                 $"VALUES ('{newMember.SSN}', '{newMember.FirstName}', '{newMember.LastName}', '{newMember.HomeAddress}'," +
                 $" '{newMember.CampusAddress}', '{newMember.CardNo}');" +
                 "INSERT INTO Member(SSN, Personification) " + $"VALUES('{newMember.SSN}', '{newMember.Personification}');";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
-            {
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    success = true;
-                }
-                catch (SqlException e)
-                {
-
-                    Console.WriteLine(e.Message);
-                }
-            }
-            _sqlConnection.Close();
-            return success;
+            return cmdBuilder.ExecuteCommand(connectionString, sql);
         }
 
         public bool DeleteMemberBySSN(string connectionString, long ssn)
         {
-            SqlConnection _sqlConnection = new SqlConnection { ConnectionString = connectionString };
-            _sqlConnection.Open();
-
-            bool success = false;
 
             string sql = $"DELETE FROM Person WHERE SSN = '{ssn}';";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _sqlConnection))
-            {
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    success = true;
-                }
-                catch (SqlException e)
-                {
-
-                    Console.WriteLine(e.Message);
-                }
-            }
-            _sqlConnection.Close();
-            return success;
+            return cmdBuilder.ExecuteCommand(connectionString, sql);
         }
     }
 }
