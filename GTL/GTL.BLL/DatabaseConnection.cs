@@ -14,7 +14,7 @@ namespace GTL.BLL
             string connectionString = @"Data Source=(local)\MSSQLEXPRESS2014;" + "Initial Catalog=GTL_TEST; Integrated Security=True";
             string connectionString_ = @"Data Source=(local)\SQL1;" + "Initial Catalog=GTL_TEST; Integrated Security=True";
 
-            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString)
+            SqlConnectionStringBuilder connectionStringBuilder = new SqlConnectionStringBuilder(connectionString_)
             {
                 ConnectTimeout = 5
             };
