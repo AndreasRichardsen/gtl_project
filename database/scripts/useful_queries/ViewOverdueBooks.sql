@@ -7,4 +7,4 @@ WHERE Bo.CardNo IN ( SELECT P.CardNo
 										FROM Member AS M
 										WHERE (M.Personification = 'Student' AND Bo.IsReturned = 'false' AND (DATEDIFF(DAY, Bo.DateBorrowed, GETDATE()) >= 21)
 										OR 
-											(M.Personification = 'Professor' AND Bo.IsReturned = 'false' AND (DATEDIFF(MONTH, Bo.DateBorrowed, GETDATE()) >= 3))))));
+										(M.Personification = 'Professor' AND Bo.IsReturned = 'false' AND (DATEDIFF(MONTH, Bo.DateBorrowed, GETDATE()) >= 3))))));
